@@ -46,8 +46,35 @@ public class TestCase {
 	    freq = myObject.frequency();
 	    if(4 != freq) {System.out.println("frequency() for Hi_Ho_Hi_Ho, should return 4, when taget is H. But it returns "+freq); c++; }
 
-	    // Write your testCase here
+	    // Write your testCase here (7)
+	    myObject.setSpace("KA KI KU KE KO".getBytes());
+	    myObject.setTarget("K".getBytes());
+	    freq = myObject.frequency();
+		if (0 <= freq) { // 正常な値  
+			System.out.println("Frequency() is Not Error"); 
+		} else {		 // 異常な値
+			System.out.println("Frequency() is Error"); 
+		}
+		freq = myObject.subByteFrequency(0, 15);
+		if (0 <= freq) { // 正常な値  
+			System.out.println("subByteFrequency() is Not Error"); 
+		} else {		 // 異常な値
+			System.out.println("subByteFrequency() is Error"); 
+		}
 
+		// (8) spaceLengthの数だけ繰り返してしまうと、41行目の
+		//   if(myTarget[i] != mySpace[start+i]) { abort = true; break; }
+		// の部分でmyTargetの長さが２文字以上の場合mySpace[]の範囲外を参照してしまう。
+		// そのため、以下のように修正する必要がある。
+		//   for(int start = 0; start<spaceLength; start++) {
+		//    ↓
+		//   for(int start = 0; start<spaceLength - targetLength; start++) {}
+		//
+		// testCase (9)
+	    myObject.setSpace("ABC ABD ABE AB".getBytes());
+	    myObject.setTarget("ABC".getBytes());
+	    freq = myObject.frequency();
+	    if(1 != freq) {System.out.println("frequency() for ABC_ABD_ABE, should return 1, when taget is ABC. But it returns "+freq); c++; }
 	}
 	catch(Exception e) {
 	    System.out.println("Exception occurred in Frequencer Object");
