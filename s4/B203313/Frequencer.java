@@ -61,9 +61,13 @@ public class Frequencer implements FrequencerInterface{
 		// if suffix_i = suffix_j, it returns 0;
 
 		// ここにコードを記述せよ
-		if (mySpace[suffixArray[i]] > mySpace[suffixArray[j]]) return 1;
-		else if (mySpace[suffixArray[i]] < mySpace[suffixArray[j]]) return -1;
-		else return 0;
+		if (mySpace[i] > mySpace[j]) return 1;
+		else if (mySpace[i] < mySpace[j]) return -1;
+		else if (i+1 == mySpace.length && j+1 == mySpace.length) return 0;
+		else if (i+1 == mySpace.length) return -1;
+		else if (j+1 == mySpace.length) return 1;
+		else return suffixCompare(i+1, j+1);
+		
 		//
 		//return 0; // この行は変更しなければいけない。
 	}
@@ -82,32 +86,11 @@ public class Frequencer implements FrequencerInterface{
 		// ここに、int suffixArray をソートするコードを書け。
 		// 順番は suffixCompare で定義されるものとする。
 		for (int i=0; i<suffixArray.length; i++){
-			for (int j=i+1; j<suffixArray.length-1; j++){
-				int k=0;
-				while (i+k < mySpace.length && j+k < mySpace.length) {
-					/*
-					switch(suffixCompare(i+k, j+k)) {
-					case 1: //i>j
-						int num1 = suffixArray[i];
-						suffixArray[i] = suffixArray[j];
-						suffixArray[j] = num1;
-						break;
-					case -1: //i<j
-						break;
-					case 0: //i=j
-						break;
-					}
-					*/
-					if(suffixCompare(i+k, j+k) == 1){
-						int num1 = suffixArray[i];
-						suffixArray[i] = suffixArray[j];
-						suffixArray[j] = num1;
-						break;
-					}
-					else if (suffixCompare(i+k, j+k) == -1) {
-						break;
-					}
-					k++;
+			for (int j=suffixArray.length-1; j>i; j--){
+				if(suffixCompare(suffixArray[i], suffixArray[j]) == 1){
+					int num = suffixArray[i];
+					suffixArray[i] = suffixArray[j];
+					suffixArray[j] = num;
 				}
 			}	
 		}
@@ -246,9 +229,9 @@ public class Frequencer implements FrequencerInterface{
 			frequencerObject.setSpace("Hi Ho Hi Ho".getBytes());
 			frequencerObject.printSuffixArray(); // you may use this line for DEBUG
 			/* Example from "Hi Ho Hi Ho"
-			0: Hi Ho
-			1: Ho
-			2: Ho Hi Ho
+			0:  Hi Ho
+			1:  Ho
+			2:  Ho Hi Ho
 			3: Hi Ho
 			4: Hi Ho Hi Ho
 			5: Ho
