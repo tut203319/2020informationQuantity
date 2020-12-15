@@ -1,9 +1,10 @@
+ main
 package s4.B203313;
 import java.lang.*;
 import s4.specification.*;
 
 /*package s4.specification;
-‚±‚±‚ÍA1‰ñA2‰ñ‚Æ•ÏX‚Ì‚È‚¢ŠO•”d—l‚Å‚ ‚éB
+ï¿½ï¿½ï¿½ï¿½ï¿½ÍA1ï¿½ï¿½A2ï¿½ï¿½Æ•ÏXï¿½Ì‚È‚ï¿½ï¿½Oï¿½ï¿½ï¿½dï¿½lï¿½Å‚ï¿½ï¿½ï¿½B
 public interface FrequencerInterface { // This interface provides the design for
 	frequency counter.
 	void setTarget(byte target[]); // set the data to search.
@@ -25,7 +26,7 @@ public class Frequencer implements FrequencerInterface{
 
 	boolean targetReady = false;
 	boolean spaceReady = false;
-	int [] suffixArray; // Suffix Array ‚ÌÀ‘•‚Ég‚¤ƒf[ƒ^‚ÌŒ^‚ğ int []‚Æ‚¹‚æB
+	int [] suffixArray; // Suffix Array ï¿½Ìï¿½ï¿½ï¿½Égï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½ÌŒ^ï¿½ï¿½ int []ï¿½Æ‚ï¿½ï¿½ï¿½B
 
 	// The variable, "suffixArray" is the sorted array of all suffixes of mySpace.
 	// Each suffix is expressed by a integer, which is the starting position in mySpace.
@@ -44,8 +45,8 @@ public class Frequencer implements FrequencerInterface{
 	}
 
 	private int suffixCompare(int i, int j) {
-		// suffixCompare ‚Íƒ\[ƒg‚Ì‚½‚ß‚Ì”äŠrƒƒ\ƒbƒh‚Å‚ ‚éB
-		// Ÿ‚Ì‚æ‚¤‚É’è‹`‚¹‚æB
+		// suffixCompare ï¿½Íƒ\ï¿½[ï¿½gï¿½Ì‚ï¿½ï¿½ß‚Ì”ï¿½rï¿½ï¿½ï¿½\ï¿½bï¿½hï¿½Å‚ï¿½ï¿½ï¿½B
+		// ï¿½ï¿½ï¿½Ì‚æ‚¤ï¿½É’ï¿½`ï¿½ï¿½ï¿½ï¿½B
 		// comparing two suffixes by dictionary order.
 		// suffix_i is a string starting with the position i in "byte [] mySpace".
 		// Each i and j denote suffix_i, and suffix_j.
@@ -60,16 +61,16 @@ public class Frequencer implements FrequencerInterface{
 		// if suffix_i < suffix_j, it returns -1
 		// if suffix_i = suffix_j, it returns 0;
 
-		// ‚±‚±‚ÉƒR[ƒh‚ğ‹Lq‚¹‚æ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ÉƒRï¿½[ï¿½hï¿½ï¿½Lï¿½qï¿½ï¿½ï¿½ï¿½
 		if (mySpace[suffixArray[i]] > mySpace[suffixArray[j]]) return 1;
 		else if (mySpace[suffixArray[i]] < mySpace[suffixArray[j]]) return -1;
 		else return 0;
 		//
-		//return 0; // ‚±‚Ìs‚Í•ÏX‚µ‚È‚¯‚ê‚Î‚¢‚¯‚È‚¢B
+		//return 0; // ï¿½ï¿½ï¿½Ìsï¿½Í•ÏXï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½Î‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½B
 	}
 
 	public void setSpace(byte []space) {
-		// suffixArray ‚Ì‘Oˆ—‚ÍAsetSpace ‚Å’è‹`‚¹‚æB
+		// suffixArray ï¿½Ì‘Oï¿½ï¿½ï¿½ï¿½ï¿½ÍAsetSpace ï¿½Å’ï¿½`ï¿½ï¿½ï¿½ï¿½B
 		mySpace = space; if(mySpace.length>0) spaceReady = true;
 		// First, create unsorted suffix array.
 		suffixArray = new int[space.length];
@@ -79,8 +80,8 @@ public class Frequencer implements FrequencerInterface{
 			suffixArray[i] = i; // Please note that each suffix is expressed by one	integer.
 		}
 		//
-		// ‚±‚±‚ÉAint suffixArray ‚ğƒ\[ƒg‚·‚éƒR[ƒh‚ğ‘‚¯B
-		// ‡”Ô‚Í suffixCompare ‚Å’è‹`‚³‚ê‚é‚à‚Ì‚Æ‚·‚éB
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ÉAint suffixArray ï¿½ï¿½\ï¿½[ï¿½gï¿½ï¿½ï¿½ï¿½Rï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½B
+		// ï¿½ï¿½ï¿½Ô‚ï¿½ suffixCompare ï¿½Å’ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚Æ‚ï¿½ï¿½ï¿½B
 		for (int i=0; i<suffixArray.length-1; i++){
 			for (int j=i; j<suffixArray.length-2; j++){
 				while (mySpace[suffixArray[i+k]]!=null && mySpace[suffixArray[j+k]]!=null) {
@@ -111,8 +112,8 @@ public class Frequencer implements FrequencerInterface{
 		}
 	}
 
-	// Suffix Array ‚ğ—p‚¢‚ÄA•¶š—ñ‚Ì•p“x‚ğ‹‚ß‚éƒR[ƒh
-	// ‚±‚±‚©‚çAw’è‚·‚é”ÍˆÍ‚ÌƒR[ƒh‚Í•ÏX‚µ‚Ä‚Í‚È‚ç‚È‚¢B
+	// Suffix Array ï¿½ï¿½pï¿½ï¿½ï¿½ÄAï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì•pï¿½xï¿½ï¿½ß‚ï¿½Rï¿½[ï¿½h
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½wï¿½è‚·ï¿½ï¿½ÍˆÍ‚ÌƒRï¿½[ï¿½hï¿½Í•ÏXï¿½ï¿½ï¿½Ä‚Í‚È‚ï¿½È‚ï¿½ï¿½B
 	public void setTarget(byte [] target) {
 		myTarget = target; if(myTarget.length>0) targetReady = true;
 	}
@@ -139,11 +140,11 @@ public class Frequencer implements FrequencerInterface{
 		return last1 - first;
 	}
 
-	// •ÏX‚µ‚Ä‚Í‚¢‚¯‚È‚¢ƒR[ƒh‚Í‚±‚±‚Ü‚ÅB
+	// ï¿½ÏXï¿½ï¿½ï¿½Ä‚Í‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½Rï¿½[ï¿½hï¿½Í‚ï¿½ï¿½ï¿½ï¿½Ü‚ÅB
 
 	private int targetCompare(int i, int j, int k) {
-		// suffixArray ‚ğ’Tõ‚·‚é‚Æ‚«‚Ég‚¤”äŠrŠÖ”B
-		// Ÿ‚Ì‚æ‚¤‚É’è‹`‚¹‚æ
+		// suffixArray ï¿½ï¿½Tï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Égï¿½ï¿½ï¿½ï¿½rï¿½Öï¿½ï¿½B
+		// ï¿½ï¿½ï¿½Ì‚æ‚¤ï¿½É’ï¿½`ï¿½ï¿½ï¿½ï¿½
 		// suffix_i is a string in mySpace starting at i-th position.
 		// target_i_k is a string in myTarget start at j-th postion ending k-th position.
 		// comparing suffix_i and target_j_k.
@@ -165,14 +166,14 @@ public class Frequencer implements FrequencerInterface{
 		// "Ho" < "Ho " : "Ho " is not in the head of suffix "Ho"
 		// "Ho" = "H" : "H" is in the head of suffix "Ho"
 		//
-		// ‚±‚±‚É”äŠr‚ÌƒR[ƒh‚ğ‘‚¯
+		// ï¿½ï¿½ï¿½ï¿½ï¿½É”ï¿½rï¿½ÌƒRï¿½[ï¿½hï¿½ï¿½ï¿½
 		//
-		return 0; // ‚±‚Ìs‚Í•ÏX‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B
+		return 0; // ï¿½ï¿½ï¿½Ìsï¿½Í•ÏXï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½Î‚È‚ï¿½È‚ï¿½ï¿½B
 	}
 
 	private int subByteStartIndex(int start, int end) {
-		//suffix array ‚Ì‚È‚©‚ÅA–Ú“I‚Ì•¶š—ñ‚ÌoŒ»‚ªn‚Ü‚éˆÊ’u‚ğ‹‚ß‚éƒƒ\ƒbƒh
-		// ˆÈ‰º‚Ì‚æ‚¤‚É’è‹`‚¹‚æB
+		//suffix array ï¿½Ì‚È‚ï¿½ï¿½ÅAï¿½Ú“Iï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½Ìoï¿½ï¿½ï¿½ï¿½ï¿½nï¿½Ü‚ï¿½Ê’uï¿½ï¿½ß‚éƒï¿½\ï¿½bï¿½h
+		// ï¿½È‰ï¿½ï¿½Ì‚æ‚¤ï¿½É’ï¿½`ï¿½ï¿½ï¿½ï¿½B
 		/* Example of suffix created from "Hi Ho Hi Ho"
 		0: Hi Ho
 		1: Ho
@@ -193,14 +194,14 @@ public class Frequencer implements FrequencerInterface{
 		// Assuming the suffix array is created from "Hi Ho Hi Ho",
 		// if target_start_end is "Ho ", it will return 6.
 		//
-		// ‚±‚±‚ÉƒR[ƒh‚ğ‹Lq‚¹‚æB
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ÉƒRï¿½[ï¿½hï¿½ï¿½Lï¿½qï¿½ï¿½ï¿½ï¿½B
 		//
-		return suffixArray.length; //‚±‚ÌƒR[ƒh‚Í•ÏX‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢B
+		return suffixArray.length; //ï¿½ï¿½ï¿½ÌƒRï¿½[ï¿½hï¿½Í•ÏXï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½Î‚È‚ï¿½È‚ï¿½ï¿½B
 	}
 
 	private int subByteEndIndex(int start, int end) {
-		//suffix array ‚Ì‚È‚©‚ÅA–Ú“I‚Ì•¶š—ñ‚ÌoŒ»‚µ‚È‚­‚È‚éêŠ‚ğ‹‚ß‚éƒƒ\ƒbƒh
-		// ˆÈ‰º‚Ì‚æ‚¤‚É’è‹`‚¹‚æB
+		//suffix array ï¿½Ì‚È‚ï¿½ï¿½ÅAï¿½Ú“Iï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½Ìoï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½È‚ï¿½êŠï¿½ï¿½ß‚éƒï¿½\ï¿½bï¿½h
+		// ï¿½È‰ï¿½ï¿½Ì‚æ‚¤ï¿½É’ï¿½`ï¿½ï¿½ï¿½ï¿½B
 		/* Example of suffix created from "Hi Ho Hi Ho"
 		0: Hi Ho
 		1: Ho
@@ -223,20 +224,20 @@ public class Frequencer implements FrequencerInterface{
 
 		// if target_start_end is"i", it will return 9 for "Hi Ho Hi Ho".
 		//
-		// ‚±‚±‚ÉƒR[ƒh‚ğ‹Lq‚¹‚æ
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ÉƒRï¿½[ï¿½hï¿½ï¿½Lï¿½qï¿½ï¿½ï¿½ï¿½
 		//
-		return suffixArray.length; // ‚±‚Ìs‚Í•ÏX‚µ‚È‚¯‚ê‚Î‚È‚ç‚È‚¢A
+		return suffixArray.length; // ï¿½ï¿½ï¿½Ìsï¿½Í•ÏXï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½Î‚È‚ï¿½È‚ï¿½ï¿½A
 	}
-	// Suffix Array ‚ğg‚Á‚½ƒvƒƒOƒ‰ƒ€‚ÌƒzƒƒCƒgƒeƒXƒg‚ÍA
-	// private ‚Èƒƒ\ƒbƒh‚ÆƒtƒB[ƒ‹ƒh‚ğƒAƒNƒZƒX‚·‚é‚±‚Æ‚ª•K—v‚È‚Ì‚ÅA
-	// ƒNƒ‰ƒX‚É‘®‚·‚é static main ‚É‘‚­•û–@‚à‚ ‚éB
-	// static main ‚ª‚ ‚Á‚Ä‚àAŒÄ‚Ñ‚¾‚³‚È‚¯‚ê‚Î‚æ‚¢B
-	// ˆÈ‰º‚ÍA©—R‚É•ÏX‚µ‚ÄÀŒ±‚·‚é‚±‚ÆB
-	// ’ˆÓ:•W€o—ÍAƒGƒ‰[o—Í‚ÉƒƒbƒZ[ƒW‚ğo‚·‚±‚Æ‚ÍA
-	// static main ‚©‚ç‚ÌÀs‚Ì‚Æ‚«‚¾‚¯‚É‹–‚³‚ê‚éB
-	// ŠO•”‚©‚ç Frequencer ‚ğg‚¤‚Æ‚«‚ÉƒƒbƒZ[ƒW‚ğo—Í‚µ‚Ä‚Í‚È‚ç‚È‚¢B
-	// ‹³ˆõ‚ÌƒeƒXƒgÀs‚Ì‚Æ‚«‚ÉƒƒbƒZ[ƒW‚ª‚Å‚é‚ÆAd—l‚É‚È‚¢“®ì‚ğ‚·‚é‚Æ‚İ‚È‚µA
-	// Œ¸“_‚Ì‘ÎÛ‚Å‚ ‚éB
+	// Suffix Array ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½Ìƒzï¿½ï¿½ï¿½Cï¿½gï¿½eï¿½Xï¿½gï¿½ÍA
+	// private ï¿½Èƒï¿½ï¿½\ï¿½bï¿½hï¿½Æƒtï¿½Bï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½Aï¿½Nï¿½Zï¿½Xï¿½ï¿½ï¿½é‚±ï¿½Æ‚ï¿½ï¿½Kï¿½vï¿½È‚Ì‚ÅA
+	// ï¿½Nï¿½ï¿½ï¿½Xï¿½É‘ï¿½ï¿½ï¿½ï¿½ï¿½ static main ï¿½Éï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½ï¿½ï¿½ï¿½B
+	// static main ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½Aï¿½Ä‚Ñ‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½Î‚æ‚¢ï¿½B
+	// ï¿½È‰ï¿½ï¿½ÍAï¿½ï¿½ï¿½Rï¿½É•ÏXï¿½ï¿½ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½é‚±ï¿½ÆB
+	// ï¿½ï¿½ï¿½ï¿½:ï¿½Wï¿½ï¿½ï¿½oï¿½ÍAï¿½Gï¿½ï¿½ï¿½[ï¿½oï¿½Í‚Éƒï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ÍA
+	// static main ï¿½ï¿½ï¿½ï¿½Ìï¿½sï¿½Ì‚Æ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É‹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
+	// ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Frequencer ï¿½ï¿½gï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Éƒï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½ï¿½oï¿½Í‚ï¿½ï¿½Ä‚Í‚È‚ï¿½È‚ï¿½ï¿½B
+	// ï¿½ï¿½ï¿½ï¿½Ìƒeï¿½Xï¿½gï¿½ï¿½sï¿½Ì‚Æ‚ï¿½ï¿½Éƒï¿½ï¿½bï¿½Zï¿½[ï¿½Wï¿½ï¿½ï¿½Å‚ï¿½ÆAï¿½dï¿½lï¿½É‚È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚İ‚È‚ï¿½ï¿½A
+	// ï¿½ï¿½ï¿½_ï¿½Ì‘ÎÛ‚Å‚ï¿½ï¿½ï¿½B
 	public static void main(String[] args) {
 		Frequencer frequencerObject;
 		try {

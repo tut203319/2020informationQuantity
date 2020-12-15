@@ -1,4 +1,4 @@
-package s4.B203319; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID. 
+package s4.B203319; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID.
 import java.lang.*;
 import s4.specification.*;
 
@@ -24,8 +24,8 @@ public interface InformationEstimatorInterface{
 // It returns Double.MAX_VALUE, when the true value is infinite, or space is not set.
 // The behavior is undefined, if the true value is finete but larger than Double.MAX_VALUE.
 // Note that this happens only when the space is unreasonably large. We will encounter other problem anyway.
-// Otherwise, estimation of information quantity, 
-}                        
+// Otherwise, estimation of information quantity,
+}
 */
 
 
@@ -46,7 +46,43 @@ public class TestCase {
 	    freq = myObject.frequency();
 	    if(4 != freq) {System.out.println("frequency() for Hi_Ho_Hi_Ho, should return 4, when taget is H. But it returns "+freq); c++; }
 
-	    // Write your testCase here
+		// Write your testCase here
+		//BlackBox testCase
+		// When TARGET is not set
+		myObject = new Frequencer();
+		myObject.setSpace("Hi Ho Hi Ho".getBytes());
+	    freq = myObject.frequency();
+		if(-1 != freq) {System.out.println("frequency() for Hi Ho Hi Ho should return -1, when taget is not set. But it returns "+freq); c++; }
+
+		// When TARGET's length is zero
+	    myObject.setTarget("".getBytes());
+	    freq = myObject.frequency();
+	    if(-1 != freq) {System.out.println("frequency() for Hi_Ho_Hi_Ho, should return -1, when taget's length is zero. But it returns "+freq); c++; }
+
+
+		// When SPACE is not set
+		myObject = new Frequencer();
+	    myObject.setTarget("H".getBytes());
+	    freq = myObject.frequency();
+		if(0 != freq) {System.out.println("frequency() for HogeHoge turn 0, when space is not set. But it returns "+freq); c++; }
+
+		// When SACE's length is zoro
+		myObject.setSpace("".getBytes());
+	    freq = myObject.frequency();
+		if(0 != freq) {System.out.println("frequency() for Hi_Ho_Hi_Ho, should return 0, when Space's length is zero. But it returns "+freq); c++; }
+
+		// When Space's length is two
+		myObject = new Frequencer();
+	    myObject.setSpace("Hi Ho Hi Ho".getBytes());
+	    myObject.setTarget("Ho".getBytes());
+	    freq = myObject.frequency();
+	    if(4 != freq) {System.out.println("frequency() for Hi_Ho_Hi_Ho, should return 2, when taget is Ho. But it returns "+freq); c++; }
+
+		// White Box testCase
+	    myObject.setSpace("Hoge Hoge".getBytes());
+	    myObject.setTarget("Hoge".getBytes());
+	    freq = myObject.frequency();
+		if(2 != freq) {System.out.println("frequency() for HogeHoge should return 2, when taget is Ho. But it returns "+freq); c++; }
 
 	}
 	catch(Exception e) {
@@ -79,5 +115,4 @@ public class TestCase {
 	}
 	if(c == 0) { System.out.println("TestCase OK"); }
     }
-}	    
-	    
+}

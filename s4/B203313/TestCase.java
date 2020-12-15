@@ -1,3 +1,4 @@
+ main
 package s4.B203313; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID. 
 import java.lang.*;
 import s4.specification.*;
@@ -50,24 +51,24 @@ public class TestCase {
 			myObject.setSpace("KA KI KU KE KO".getBytes());
 			myObject.setTarget("K".getBytes());
 			freq = myObject.frequency();
-			if (0 <= freq) { // ³í‚È’l  
+			if (0 <= freq) { // ï¿½ï¿½ï¿½ï¿½È’l  
 				System.out.println("Frequency() is Not Error"); 
-			} else {		 // ˆÙí‚È’l
+			} else {		 // ï¿½Ùï¿½È’l
 				System.out.println("Frequency() is Error"); 
 			}
 			freq = myObject.subByteFrequency(0, 15);
-			if (0 <= freq) { // ³í‚È’l  
+			if (0 <= freq) { // ï¿½ï¿½ï¿½ï¿½È’l  
 				System.out.println("subByteFrequency() is Not Error"); 
-			} else {		 // ˆÙí‚È’l
+			} else {		 // ï¿½Ùï¿½È’l
 				System.out.println("subByteFrequency() is Error"); 
 			}
 
-			// (8) spaceLength‚Ì”‚¾‚¯ŒJ‚è•Ô‚µ‚Ä‚µ‚Ü‚¤‚ÆA41s–Ú‚Ì
+			// (8) spaceLengthï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½Ô‚ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½ÆA41ï¿½sï¿½Ú‚ï¿½
 			//   if(myTarget[i] != mySpace[start+i]) { abort = true; break; }
-			// ‚Ì•”•ª‚ÅmyTarget‚Ì’·‚³‚ª‚Q•¶ŽšˆÈã‚Ìê‡mySpace[]‚Ì”ÍˆÍŠO‚ðŽQÆ‚µ‚Ä‚µ‚Ü‚¤B
-			// ‚»‚Ì‚½‚ßAˆÈ‰º‚Ì‚æ‚¤‚ÉC³‚·‚é•K—v‚ª‚ ‚éB
+			// ï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½myTargetï¿½Ì’ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Qï¿½ï¿½ï¿½ï¿½ï¿½Èï¿½Ìê‡mySpace[]ï¿½Ì”ÍˆÍŠOï¿½ï¿½Qï¿½Æ‚ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½B
+			// ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½ßAï¿½È‰ï¿½ï¿½Ì‚æ‚¤ï¿½ÉCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Kï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 			//   for(int start = 0; start<spaceLength; start++) {
-			//    «
+			//    ï¿½ï¿½
 			//   for(int start = 0; start<spaceLength - targetLength; start++) {}
 			//
 			// testCase (9)
@@ -109,3 +110,4 @@ public class TestCase {
     }
 }
 	    
+
