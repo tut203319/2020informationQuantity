@@ -1,4 +1,4 @@
-package s4.B203319; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID. 
+package s4.B203319; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID.
 import java.lang.*;
 import s4.specification.*;
 
@@ -36,6 +36,7 @@ public class Frequencer implements FrequencerInterface {
         int spaceLength = mySpace.length;
         int count = 0;
         for(int start = 0; start<spaceLength; start++) { // Is it OK?
+        //for (int start=0; start<spaceLength-targetLength; start++){
             boolean abort = false;
             for(int i = 0; i<targetLength; i++) {
                 if(myTarget[i] != mySpace[start+i]) { abort = true; break; }
