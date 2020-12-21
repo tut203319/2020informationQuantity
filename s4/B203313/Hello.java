@@ -1,4 +1,3 @@
- main
 package s4.B203313;
 import java.lang.*;
 
