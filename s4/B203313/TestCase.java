@@ -1,5 +1,4 @@
- main
-package s4.B203313; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID. 
+package s4.B203313; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID.
 import java.lang.*;
 import s4.specification.*;
 
@@ -25,8 +24,8 @@ public interface InformationEstimatorInterface{
 // It returns Double.MAX_VALUE, when the true value is infinite, or space is not set.
 // The behavior is undefined, if the true value is finete but larger than Double.MAX_VALUE.
 // Note that this happens only when the space is unreasonably large. We will encounter other problem anyway.
-// Otherwise, estimation of information quantity, 
-}                        
+// Otherwise, estimation of information quantity,
+}
 */
 
 
@@ -51,16 +50,16 @@ public class TestCase {
 			myObject.setSpace("KA KI KU KE KO".getBytes());
 			myObject.setTarget("K".getBytes());
 			freq = myObject.frequency();
-			if (0 <= freq) { // ����Ȓl  
-				System.out.println("Frequency() is Not Error"); 
+			if (0 <= freq) { // ����Ȓl
+				System.out.println("Frequency() is Not Error");
 			} else {		 // �ُ�Ȓl
-				System.out.println("Frequency() is Error"); 
+				System.out.println("Frequency() is Error");
 			}
 			freq = myObject.subByteFrequency(0, 15);
-			if (0 <= freq) { // ����Ȓl  
-				System.out.println("subByteFrequency() is Not Error"); 
+			if (0 <= freq) { // ����Ȓl
+				System.out.println("subByteFrequency() is Not Error");
 			} else {		 // �ُ�Ȓl
-				System.out.println("subByteFrequency() is Error"); 
+				System.out.println("subByteFrequency() is Error");
 			}
 
 			// (8) spaceLength�̐������J��Ԃ��Ă��܂��ƁA41�s�ڂ�
@@ -100,7 +99,7 @@ public class TestCase {
 			myObject.setTarget("00".getBytes());
 			value = myObject.estimation();
 			if((value < 3.9999) || (4.0001 <value)) { System.out.println("IQ for 00 in 3210321001230123 should be 4.0. But it returns "+value); c++; }
-		
+
 		}
 		catch(Exception e) {
 			System.out.println("Exception occurred in InformationEstimator Object");
@@ -109,5 +108,3 @@ public class TestCase {
 		if(c == 0) { System.out.println("TestCase OK"); }
     }
 }
-	    
-
