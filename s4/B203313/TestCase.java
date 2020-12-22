@@ -1,4 +1,6 @@
+
 package s4.B203313; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID.
+
 import java.lang.*;
 import s4.specification.*;
 
@@ -30,13 +32,13 @@ public interface InformationEstimatorInterface{
 
 
 public class TestCase {
-    public static void main(String[] args) {
-		int c;
+	public static void main(String[] args) {
+	int c;
 		c = 0;
 		try {
 			FrequencerInterface  myObject;
 			int freq;
-				c = 0;
+			c = 0;
 			System.out.println("checking Frequencer");
 
 			// This is smoke test
@@ -50,6 +52,7 @@ public class TestCase {
 			myObject.setSpace("KA KI KU KE KO".getBytes());
 			myObject.setTarget("K".getBytes());
 			freq = myObject.frequency();
+
 			if (0 <= freq) { // ����Ȓl
 				System.out.println("Frequency() is Not Error");
 			} else {		 // �ُ�Ȓl
@@ -60,11 +63,12 @@ public class TestCase {
 				System.out.println("subByteFrequency() is Not Error");
 			} else {		 // �ُ�Ȓl
 				System.out.println("subByteFrequency() is Error");
+
 			}
 
 			// (8) spaceLength�̐������J��Ԃ��Ă��܂��ƁA41�s�ڂ�
 			//   if(myTarget[i] != mySpace[start+i]) { abort = true; break; }
-			// �̕�����myTarget�̒������Q�����ȏ�̏ꍇmySpace[]�͈̔͊O��Q�Ƃ��Ă��܂��B
+			// �̕�����myTarget�̒������Q�����ȏ�̏ꍇmySpace[]�͈̔͊O���Q�Ƃ��Ă��܂��B
 			// ���̂��߁A�ȉ��̂悤�ɏC������K�v������B
 			//   for(int start = 0; start<spaceLength; start++) {
 			//    ��
@@ -105,6 +109,10 @@ public class TestCase {
 			System.out.println("Exception occurred in InformationEstimator Object");
 			c++;
 		}
-		if(c == 0) { System.out.println("TestCase OK"); }
-    }
+		if(c == 0) { System.out.println("TestCase OK"); }	}
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> baccb2fe43054b9af4dc0a2ea8cc18c0d7cefe47

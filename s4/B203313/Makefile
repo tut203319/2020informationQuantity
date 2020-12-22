@@ -1,3 +1,4 @@
+
 all:
 	javac Hello.java -classpath "../.."
 	javac Frequencer.java -classpath "../.."
