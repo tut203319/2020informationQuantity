@@ -1,4 +1,3 @@
- main
 package s4.B203313; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID. 
 import java.lang.*;
 import s4.specification.*;
@@ -31,13 +30,13 @@ public interface InformationEstimatorInterface{
 
 
 public class TestCase {
-    public static void main(String[] args) {
-		int c;
+	public static void main(String[] args) {
+	int c;
 		c = 0;
 		try {
 			FrequencerInterface  myObject;
 			int freq;
-				c = 0;
+			c = 0;
 			System.out.println("checking Frequencer");
 
 			// This is smoke test
@@ -51,24 +50,24 @@ public class TestCase {
 			myObject.setSpace("KA KI KU KE KO".getBytes());
 			myObject.setTarget("K".getBytes());
 			freq = myObject.frequency();
-			if (0 <= freq) { // ï¿½ï¿½ï¿½ï¿½È’l  
+			if (0 <= freq) { // ³í‚È’l  
 				System.out.println("Frequency() is Not Error"); 
-			} else {		 // ï¿½Ùï¿½È’l
+			} else {		 // ˆÙí‚È’l
 				System.out.println("Frequency() is Error"); 
 			}
 			freq = myObject.subByteFrequency(0, 15);
-			if (0 <= freq) { // ï¿½ï¿½ï¿½ï¿½È’l  
+			if (0 <= freq) { // ³í‚È’l  
 				System.out.println("subByteFrequency() is Not Error"); 
-			} else {		 // ï¿½Ùï¿½È’l
+			} else {		 // ˆÙí‚È’l
 				System.out.println("subByteFrequency() is Error"); 
 			}
 
-			// (8) spaceLengthï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½Ô‚ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½ÆA41ï¿½sï¿½Ú‚ï¿½
+			// (8) spaceLength‚Ì”‚¾‚¯ŒJ‚è•Ô‚µ‚Ä‚µ‚Ü‚¤‚ÆA41s–Ú‚Ì
 			//   if(myTarget[i] != mySpace[start+i]) { abort = true; break; }
-			// ï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½myTargetï¿½Ì’ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Qï¿½ï¿½ï¿½ï¿½ï¿½Èï¿½Ìê‡mySpace[]ï¿½Ì”ÍˆÍŠOï¿½ï¿½Qï¿½Æ‚ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½B
-			// ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½ßAï¿½È‰ï¿½ï¿½Ì‚æ‚¤ï¿½ÉCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Kï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
+			// ‚Ì•”•ª‚ÅmyTarget‚Ì’·‚³‚ª‚Q•¶ŽšˆÈã‚Ìê‡mySpace[]‚Ì”ÍˆÍŠO‚ðŽQÆ‚µ‚Ä‚µ‚Ü‚¤B
+			// ‚»‚Ì‚½‚ßAˆÈ‰º‚Ì‚æ‚¤‚ÉC³‚·‚é•K—v‚ª‚ ‚éB
 			//   for(int start = 0; start<spaceLength; start++) {
-			//    ï¿½ï¿½
+			//    «
 			//   for(int start = 0; start<spaceLength - targetLength; start++) {}
 			//
 			// testCase (9)
@@ -100,14 +99,13 @@ public class TestCase {
 			myObject.setTarget("00".getBytes());
 			value = myObject.estimation();
 			if((value < 3.9999) || (4.0001 <value)) { System.out.println("IQ for 00 in 3210321001230123 should be 4.0. But it returns "+value); c++; }
-		
+
 		}
 		catch(Exception e) {
 			System.out.println("Exception occurred in InformationEstimator Object");
 			c++;
 		}
-		if(c == 0) { System.out.println("TestCase OK"); }
-    }
+		if(c == 0) { System.out.println("TestCase OK"); }	}
 }
-	    
+	
 
