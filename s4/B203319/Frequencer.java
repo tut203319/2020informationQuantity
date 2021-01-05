@@ -96,17 +96,16 @@ public class Frequencer implements FrequencerInterface{
 		mySpace = space; if(mySpace.length>0) spaceReady = true;
 		// First, create unsorted suffix array.
 		suffixArray = new int[space.length];
-		// put all suffixes in suffixArray.
 
+		// put all suffixes in suffixArray.
 		for(int i = 0; i< space.length; i++) {
 			suffixArray[i] = i; // Please note that each suffix is expressed by one	integer.
 		}
 		//
 		// ここに、int suffixArray をソートするコードを書け。
 		// 順番は suffixCompare で定義されるものとする。
-
 		//クイックソート
-		quickSort(0,space.length-1);
+		if (space.length >1){quickSort(0,space.length-1);}
 
 
 		//バブルソート
@@ -148,7 +147,6 @@ public class Frequencer implements FrequencerInterface{
 		*/
 		int first = subByteStartIndex(start, end);
 		int last = subByteEndIndex(start, end);
-		System.out.println(first+","+last);
 		return last - first;
 	}
 

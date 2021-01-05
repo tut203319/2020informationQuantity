@@ -54,6 +54,7 @@ public class TestCase {
 	    freq = myObject.frequency();
 		if(-1 != freq) {System.out.println("frequency() for Hi Ho Hi Ho should return -1, when taget is not set. But it returns "+freq); c++; }
 
+
 		// When TARGET's length is zero
 	    myObject.setTarget("".getBytes());
 	    freq = myObject.frequency();
@@ -76,7 +77,7 @@ public class TestCase {
 	    myObject.setSpace("Hi Ho Hi Ho".getBytes());
 	    myObject.setTarget("Ho".getBytes());
 	    freq = myObject.frequency();
-	    if(4 != freq) {System.out.println("frequency() for Hi_Ho_Hi_Ho, should return 2, when taget is Ho. But it returns "+freq); c++; }
+	    if(2 != freq) {System.out.println("frequency() for Hi_Ho_Hi_Ho, should return 2, when taget is Ho. But it returns "+freq); c++; }
 
 		// White Box testCase
 	    myObject.setSpace("Hoge Hoge".getBytes());
@@ -113,6 +114,7 @@ public class TestCase {
 	    System.out.println("Exception occurred in InformationEstimator Object");
 	    c++;
 	}
-	if(c == 0) { System.out.println("TestCase OK"); }
-    }
+	if(c == 0){ System.out.println("TestCase OK"); }
+	else{ System.out.println( c+" ErrorExist"); }
+	}
 }
