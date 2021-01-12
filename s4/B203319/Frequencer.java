@@ -225,9 +225,9 @@ public class Frequencer implements FrequencerInterface{
 				top = i;
 			}
 		}
-		if(top > btm){
-			System.out.println("トップ二分探索エラー");
-		}
+		//if(top > btm){
+		//	System.out.println("トップ二分探索エラー");
+		//}
 		return btm;
 
 		/*
@@ -283,9 +283,9 @@ public class Frequencer implements FrequencerInterface{
 				top = i;
 			}
 		}
-		if(top > btm){
-			System.out.println("エンド二分探索エラー");
-		}
+		//if(top > btm){
+		//	System.out.println("エンド二分探索エラー");
+		//}
 		return btm;
 
 		/*
