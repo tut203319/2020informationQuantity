@@ -50,7 +50,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
     public double estimation(){
         boolean [] partition = new boolean[myTarget.length+1];
         int np = 1<<(myTarget.length-1);
-        System.out.println("np="+np+" length="+myTarget.length);
+        //System.out.println("np="+np+" length="+myTarget.length);
         double value = Double.MAX_VALUE; // value = mininimum of each "value1".
 
         for(int p=0; p<np; p++) { // There are 2^(n-1) kinds of partitions.

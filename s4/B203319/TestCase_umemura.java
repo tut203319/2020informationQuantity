@@ -1,4 +1,4 @@
-package s4.B203319; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID.
+package s4.umemura; // Please modify to s4.Bnnnnnn, where nnnnnn is your student ID. 
 import java.lang.*;
 import s4.specification.*;
 
@@ -24,8 +24,8 @@ public interface InformationEstimatorInterface{
 // It returns Double.MAX_VALUE, when the true value is infinite, or space is not set.
 // The behavior is undefined, if the true value is finete but larger than Double.MAX_VALUE.
 // Note that this happens only when the space is unreasonably large. We will encounter other problem anyway.
-// Otherwise, estimation of information quantity,
-}
+// Otherwise, estimation of information quantity, 
+}                        
 */
 
 
@@ -47,7 +47,7 @@ public class TestCase {
 	    if(-1 != freq) { System.out.println("frequency() should return -1, when target is empty, but return "+freq); c++; }
 	    myObject = new Frequencer();
 	    myObject.setSpace("AAA".getBytes());
-	    if(-1 != freq) { System.out.println("frequency() for AAA should return -1, when target is  not set. But it returns  "+freq); c++; }
+	    if(-1 != freq) { System.out.println("frequency() for AAA should return -1, when target is  not set. But it returns  "+freq); c++; }	
 	    myObject = new Frequencer();
 	    myObject.setSpace("AAA".getBytes());
 	    myObject.setTarget("".getBytes());
@@ -55,12 +55,12 @@ public class TestCase {
 	    if(-1 != freq) { System.out.println("frequency() for AAA should return -1, when taget empty string. But it returns "+freq); c++; }
 	    myObject = new Frequencer();
 	    myObject.setTarget("A".getBytes());
-	    freq = myObject.frequency();
+	    freq = myObject.frequency();	   
  	    if(0 != freq) { System.out.println("frequency() for not set, should return 0, when taget is not empty. But it returns "+freq); c++; }
 	    myObject = new Frequencer();
 	    myObject.setSpace("".getBytes());
 	    myObject.setTarget("A".getBytes());
-	    freq = myObject.frequency();
+	    freq = myObject.frequency();	   
  	    if(0 != freq) { System.out.println("frequency() for empty space, should return 0, when taget is not empty. But it returns "+freq); c++; }
 	    myObject = new Frequencer();
 	    myObject.setSpace("AAA".getBytes());
@@ -113,8 +113,8 @@ public class TestCase {
 	    myObject.setSpace("AAAB".getBytes());
 	    myObject.setTarget("AAAAB".getBytes());
 	    freq = myObject.subByteFrequency(4,5);
-	    if(1 != freq) {
-		System.out.println("SubBytefrequency() for AAAB, should return 1, when taget is AAAAB[4:5]. But it returns "+freq); c++;
+	    if(1 != freq) { 
+		System.out.println("SubBytefrequency() for AAAB, should return 1, when taget is AAAAB[4:5]. But it returns "+freq); c++;  
 	    }
 	}
 	catch(Exception e) {
@@ -147,4 +147,5 @@ public class TestCase {
 	}
 	if(c == 0) { System.out.println("TestCase OK"); }
     }
-}
+}	    
+	    
