@@ -21,6 +21,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
     byte[] myTarget; // data to compute its information quantity
     byte[] mySpace;  // Sample space to compute the probability
     FrequencerInterface myFrequencer;  // Object for counting frequency
+    double[] iqStorage;
 
     byte[] subBytes(byte[] x, int start, int end) {
         // corresponding to substring of String for byte[],
@@ -38,6 +39,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
     @Override
     public void setTarget(byte[] target) {
         myTarget = target;
+
     }
 
     @Override
@@ -46,6 +48,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
         mySpace = space; myFrequencer.setSpace(space);
     }
 
+    /*
     @Override
     public double estimation(){
         boolean [] partition = new boolean[myTarget.length+1];
@@ -87,6 +90,35 @@ public class InformationEstimator implements InformationEstimatorInterface {
             if(value1 < value) value = value1;
         }
         return value;
+        */
+
+    public double partIq(int partition){
+
+        //必ず呼び出される，全ての長さの文字列をvalueに入れる
+        myFrequencer.setTarget(subBytes(myTarget, 0, myTarget.length));
+        double value =  iq(myFrequencer.frequency());
+        if(partition>0){
+            double value1 = (double) 0.0;
+            //search the minimum one
+            for(int i=0;i<partition;i++){
+                myFrequencer.setTarget(subBytes(myTarget, i+1, partition+1));
+                value1 = iqStorage[i]+iq(myFrequencer.frequency());
+
+                // Get the minimal value in "value"
+                if(value1 < value) value = value1;
+            }
+        }
+        return value;
+    }
+    //DP
+    @Override
+    public double estimation(){
+        iqStorage = new double[myTarget.length];
+        for(int i=0;i<myTarget.length;i++){
+            //System.out.println(i);
+            iqStorage[i] = partIq(i);
+        }
+        return iqStorage[myTarget.length-1];
     }
 
     public static void main(String[] args) {
