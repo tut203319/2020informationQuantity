@@ -126,8 +126,18 @@ public class TestCase {
 	    InformationEstimatorInterface myObject;
 	    double value;
 	    System.out.println("checking s4.slow.InformationEstimator");
-	    myObject = new InformationEstimator();
-	    myObject.setSpace("3210321001230123".getBytes());
+		myObject = new InformationEstimator();
+		myObject.setSpace("3210321001230123".getBytes());
+
+		//ターゲットがnullの時
+	    value = myObject.estimation();
+		if((value < -0.0001) || (0.0001 <value)) { System.out.println("IQ for null in 3210321001230123 should be 0.0 But it returns "+value); c++; }
+		//ターゲット長が0の時
+		myObject.setTarget("".getBytes());
+	    value = myObject.estimation();
+		if((value < -0.0001) || (0.0001 < value)) { System.out.println("IQ for \"\" in 3210321001230123 should be 0.0 But it returns "+value); c++; }
+
+		//ターゲットが0のとき
 	    myObject.setTarget("0".getBytes());
 	    value = myObject.estimation();
 	    if((value < 1.9999) || (2.0001 <value)) { System.out.println("IQ for 0 in 3210321001230123 should be 2.0. But it returns "+value); c++; }
@@ -136,10 +146,18 @@ public class TestCase {
 	    if((value < 2.9999) || (3.0001 <value)) { System.out.println("IQ for 01 in 3210321001230123 should be 3.0. But it returns "+value); c++; }
 	    myObject.setTarget("0123".getBytes());
 	    value = myObject.estimation();
-	    if((value < 2.9999) || (3.0001 <value)) { System.out.println("IQ for 0123 in 3210321001230123 should be 3.0. But it returns "+value); c++; }
+		if((value < 2.9999) || (3.0001 <value)) { System.out.println("IQ for 0123 in 3210321001230123 should be 3.0. But it returns "+value); c++; }
+
 	    myObject.setTarget("00".getBytes());
 	    value = myObject.estimation();
-	    if((value < 3.9999) || (4.0001 <value)) { System.out.println("IQ for 00 in 3210321001230123 should be 4.0. But it returns "+value); c++; }
+		if((value < 3.9999) || (4.0001 <value)) { System.out.println("IQ for 00 in 3210321001230123 should be 4.0. But it returns "+value); c++; }
+
+		//Spaceがnullの時
+		myObject = new InformationEstimator();
+        myObject.setTarget("0".getBytes());
+        value = myObject.estimation();
+		if(value < Double.MAX_VALUE-0.0001) { System.out.println("IQ for \"\" in null should be "+Double.MAX_VALUE+" But it returns "+value); c++; }
+
 	}
 	catch(Exception e) {
 	    System.out.println("Exception occurred: STOP");

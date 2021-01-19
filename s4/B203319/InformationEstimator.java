@@ -95,7 +95,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
     //DP
     @Override
     public double estimation(){
-        if(myTarget.length == 0 || myTarget ==null){
+        if(myTarget == null || myTarget.length == 0){
             return 0;
         }else if(mySpace == null){
             return Double.MAX_VALUE;
