@@ -60,14 +60,22 @@ public class Frequencer implements FrequencerInterface{
 		// if suffix_i < suffix_j, it returns -1
 		// if suffix_i = suffix_j, it returns 0;
 
-		// ここにコードを記述せよ
-		if (mySpace[i] > mySpace[j]) return 1;
-		else if (mySpace[i] < mySpace[j]) return -1;
-		else if (i+1 == mySpace.length && j+1 == mySpace.length) return 0;
-		else if (i+1 == mySpace.length) return -1;
-		else if (j+1 == mySpace.length) return 1;
-		else return suffixCompare(i+1, j+1);
-
+		while(i < mySpace.length && j < mySpace.length){
+			if(mySpace[i] == mySpace[j]){
+				i++;j++;
+			}else if (mySpace[i] >mySpace[j]){
+				return 1;
+			}else{
+				return -1;
+			}
+		}
+		if (i==j){
+			return 0;
+		}else if (i == mySpace.length){
+			return -1;
+		} else {
+			return 1;
+		}
 	}
 
 	public void quickSort(int top,int btm){
@@ -107,19 +115,6 @@ public class Frequencer implements FrequencerInterface{
 		//クイックソート
 		if (space.length >1){quickSort(0,space.length-1);}
 
-
-		//バブルソート
-		/*
-		for (int i=0; i<suffixArray.length; i++){
-			for (int j=suffixArray.length-1; j>i; j--){
-				if(suffixCompare(suffixArray[i], suffixArray[j]) == 1){
-					int num = suffixArray[i];
-					suffixArray[i] = suffixArray[j];
-					suffixArray[j] = num;
-				}
-			}
-		}
-		*/
 	}
 
 	// Suffix Array を用いて、文字列の頻度を求めるコード
@@ -175,15 +170,22 @@ public class Frequencer implements FrequencerInterface{
 		// "Ho" = "Ho"
 		// "Ho" < "Ho " : "Ho " is not in the head of suffix "Ho"
 		// "Ho" = "H" : "H" is in the head of suffix "Ho"
-		//
-		// ここに比較のコードを書け
-		if (mySpace[i] > myTarget[j]) return 1;
-		else if (mySpace[i] < myTarget[j]) return -1;
-		else if (j+1 == k) return 0;
-		else if (i+1 == mySpace.length) return -1;
-		else return targetCompare(i+1, j+1,k);
-		//
-		//return 0; // この行は変更しなければならない。
+
+		while(i < mySpace.length && j < k){
+			if(mySpace[i] == myTarget[j]){
+				i++;j++;
+			}else if (mySpace[i] > myTarget[j]){
+				return 1;
+			}else{
+				return -1;
+			}
+		}
+		if (j == k){
+			return 0;
+		}
+		//kよりjが小さくて，iが最後に到達した場合
+		return -1;
+
 	}
 
 
@@ -225,9 +227,6 @@ public class Frequencer implements FrequencerInterface{
 				top = i;
 			}
 		}
-		//if(top > btm){
-		//	System.out.println("トップ二分探索エラー");
-		//}
 		return btm;
 
 		/*
@@ -283,9 +282,7 @@ public class Frequencer implements FrequencerInterface{
 				top = i;
 			}
 		}
-		//if(top > btm){
-		//	System.out.println("エンド二分探索エラー");
-		//}
+
 		return btm;
 
 		/*
