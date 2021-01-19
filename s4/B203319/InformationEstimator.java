@@ -92,33 +92,38 @@ public class InformationEstimator implements InformationEstimatorInterface {
         return value;
         */
 
-    public double partIq(int partition){
-
-        //必ず呼び出される，全ての長さの文字列をvalueに入れる
-        myFrequencer.setTarget(subBytes(myTarget, 0, myTarget.length));
-        double value =  iq(myFrequencer.frequency());
-        if(partition>0){
-            double value1 = (double) 0.0;
-            //search the minimum one
-            for(int i=0;i<partition;i++){
-                myFrequencer.setTarget(subBytes(myTarget, i+1, partition+1));
-                value1 = iqStorage[i]+iq(myFrequencer.frequency());
-
-                // Get the minimal value in "value"
-                if(value1 < value) value = value1;
-            }
-        }
-        return value;
-    }
     //DP
     @Override
     public double estimation(){
-        iqStorage = new double[myTarget.length];
-        for(int i=0;i<myTarget.length;i++){
-            //System.out.println(i);
-            iqStorage[i] = partIq(i);
+        if(myTarget.length == 0 || myTarget ==null){
+            return 0;
+        }else if(mySpace == null){
+            return Double.MAX_VALUE;
+        }else{
+            iqStorage = new double[myTarget.length];
+            for(int i=0;i<myTarget.length;i++){
+                //System.out.println(i);
+
+                double value = Double.MAX_VALUE;
+                double value1 = (double) 0.0;
+
+                //一項目を計算
+                myFrequencer.setTarget(subBytes(myTarget, 0, myTarget.length));
+                value1 = iq(myFrequencer.frequency());
+                if(value1 < value) value = value1;
+
+                //search the minimum one
+                for(int j=0;j<i;j++){
+                    myFrequencer.setTarget(subBytes(myTarget, j+1, i+1));
+                    value1 = iqStorage[j]+iq(myFrequencer.frequency());
+                    // Get the minimal value in "value"
+                    if(value1 < value) value = value1;
+                }
+                iqStorage[i] = value;
+            }
+            return iqStorage[myTarget.length-1];
         }
-        return iqStorage[myTarget.length-1];
+
     }
 
     public static void main(String[] args) {
@@ -128,7 +133,7 @@ public class InformationEstimator implements InformationEstimatorInterface {
         myObject.setSpace("3210321001230123".getBytes());
         myObject.setTarget("0".getBytes());
         value = myObject.estimation();
-        System.out.println(">0 "+value);
+        System.out.println(">0"+value);
         myObject.setTarget("01".getBytes());
         value = myObject.estimation();
         System.out.println(">01 "+value);
